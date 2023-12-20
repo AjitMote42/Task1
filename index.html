@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/themes/introjs-modern.css">
+    <link rel="stylesheet" href="task1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="form">
+            <form action="">
+                <h1>Registration form</h1>
+                <input id="inp1" type="text" placeholder="Enter username">
+                <input id="inp2" type="email" placeholder="Enter email">
+                <input id="inp3" type="password" placeholder="Enter password">
+                <input id="inp4" type="text" placeholder="Enter address">
+                <input id="inp5" type="number" placeholder="Enter age">
+                <button id="signupBtn">Sign Up</button>
+            </form>
+        </div>
+        <div id="invsbox" class="invisiblebox">
+            <h1>Display All info here</h1>
+            <h1 id="showInfo"></h1>
+            <h1 id="showemail"></h1>
+            <h1 id="showpasseword"></h1>
+            <h1 id="showaddress"></h1>
+            <h1 id="showage"></h1>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/intro.js/intro.js"></script>
+    <script>
+      
+        $(document).ready(function() {
+    $("#signupBtn").on("click", function (event) {
+        event.preventDefault();
+
+        var username = $("#inp1").val();
+        var email = $("#inp2").val();
+        var password = $("#inp3").val();
+        var address = $("#inp4").val();
+        var age = $("#inp5").val();
+
+        $("#showInfo").html(username);
+        $("#showemail").html(email);
+        $("#showpasseword").html(password);
+        $("#showaddress").html(address);
+        $("#showage").html(age);
+
+
+        $("#invsbox").css("display", "block");
+    });
+});
+
+   introJs().setOptions({
+            steps: [{
+                title: 'Welcome to my web site',
+                intro: 'follow the step to Sing up form ',
+                position: 'right'
+            },
+            {   title: 'Step:1',
+                element: document.querySelector('#inp1'),
+                intro: 'This is username field , fill correctly'
+            },
+            {    title: 'Step:2',
+                element: document.querySelector('#inp2'),
+                intro: 'Enter  valid Email Address'
+            },
+            {    title: 'Step:3',
+                element: document.querySelector('#inp3'),
+                intro: 'Enter  strong password password will be 8 char 1 symboll 1 number'
+            },
+            {    title: 'Step:4',
+                element: document.querySelector('#inp4'),
+                intro: 'Enter Your Current Address here'
+            },
+            {    title: 'Step:5',
+                element: document.querySelector('#inp5'),
+                intro: 'Enter your age , age must be > 18'
+            },
+            {
+                title: 'Sing up button',
+                element: document.querySelector('#signupBtn'),
+                intro: 'Check all fields are filed and Then click to succesfully singUp',  
+                position: "right-down"
+            }],
+
+            showProgress :true,
+            showBullets:false,
+            disableIntraction:true
+
+        }).oncomplete(()=>{
+           confetti();
+        }).start();
+    </script>
+</body>
+
+</html>
